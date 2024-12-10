@@ -1,0 +1,47 @@
+# This is a basic workflow to help you get started with Actions
+
+# Nombre de script (este es el nombre del flujo de trabajo)
+name: HOLA-MUNDO
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Evento que activará el flujo de trabajo cuando haya un "push" o "pull request" en la rama "main"
+  push:
+    branches: [ "main" ]  # Solo se activará para la rama "main"
+  
+  pull_request:
+    branches: [ "main" ]  # También se activará para los "pull requests" a la rama "main"
+
+  # Allows you to run this workflow manually from the Actions tab
+  # Permite ejecutar el flujo de trabajo manualmente desde la pestaña "Actions" de GitHub
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# El flujo de trabajo puede contener uno o más trabajos (jobs) que pueden ejecutarse de manera secuencial o paralela
+jobs:
+  hola-mundo:  # Nombre del trabajo (job)
+  
+    # Este flujo de trabajo contiene un único trabajo llamado "build"
+    build:
+    
+      # Define en qué tipo de máquina o entorno se ejecutará el trabajo
+      # En este caso, estamos usando la última versión de Ubuntu
+      runs-on: ubuntu-latest  # El trabajo se ejecutará en un entorno de Ubuntu
+
+      # Los "steps" representan una secuencia de tareas que se ejecutan dentro del trabajo
+      steps:
+      
+        # Este paso utiliza una acción de GitHub para hacer checkout (verificar) el código
+        # Esto descarga el código del repositorio para que el trabajo pueda usarlo
+        - uses: actions/checkout@v4  # Esta acción descarga el código fuente
+
+        # Este paso ejecuta un comando de una sola línea en la terminal
+        - name: Run a one-line script  # Nombre del paso
+          run: echo Hello, world!  # Ejecuta el comando "echo Hello, world!" en la terminal
+        
+        # Este paso ejecuta un conjunto de comandos en la terminal (un script de múltiples líneas)
+        - name: Run a multi-line script  # Nombre del paso
+          run: |
+            echo Add other actions to build,  # Imprime este texto en la salida
+            echo test, and deploy your project.  # Imprime este texto en la salida
