@@ -34,7 +34,7 @@ jobs:
       
         # Este paso utiliza una acción de GitHub para hacer checkout (verificar) el código
         # Esto descarga el código del repositorio para que el trabajo pueda usarlo
-        - uses: actions/checkout@v4  # Esta acción descarga el código fuente
+        - uses: actions/checkout@v6  # Esta acción descarga el código fuente
 
         # Este paso ejecuta un comando de una sola línea en la terminal
         - name: Run a one-line script  # Nombre del paso
